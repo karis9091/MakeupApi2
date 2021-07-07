@@ -3,12 +3,12 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 class MakeupModel {
-  String id;
-  String brand;
-  String name;
-  String price;
-  String image_link;
-  String description;
+  dynamic id;
+  dynamic brand;
+  dynamic name;
+  dynamic price;
+  dynamic image_link;
+  dynamic description;
   List<Product_colors> product_colors;
 
   MakeupModel(
@@ -27,9 +27,22 @@ class MakeupModel {
         price: makeup['price'],
         image_link: makeup['image_link'],
         description: makeup['description'],
-        product_colors: data['product_colors']
+        product_colors: makeup['product_colors']
             .map((product_colors) => Product_colors.fromJson(product_colors))
             .toList()
             .cast<Product_colors>(),
       );
+}
+
+class Product_colors {
+  String colour_name;
+  String hex_value;
+  Product_colors({this.colour_name, this.hex_value});
+
+  factory Product_colors.fromJson(
+    Map<String, dynamic> colors,
+  ) =>
+      Product_colors(
+          colour_name: colors['product_colors']['colour_name'],
+          hex_value: colors['product_colors']['hex_value']);
 }
