@@ -14,6 +14,7 @@ class MakeupProvider {
   } */
 
   //prueba
+  final amodemivida = 0;
   Future<List<MakeupModel>> obtenerMakeup(int pagina) async {
     final response = await http.get(_url, queryParameters: {'offset': pagina});
     List<MakeupModel> makeup = [];
