@@ -11,7 +11,7 @@ class MakeupState extends GetxController {
   Future<void> obtenerMakeup() async {
     final make = await _makeupProvider.obtenerMakeup(_paginado);
     makeup.addAll(make);
-    _paginado += 20;
+    _paginado += 15;
     update();
   }
 }

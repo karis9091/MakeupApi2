@@ -14,17 +14,15 @@ class MakeupProvider {
   } */
 
   //prueba
-  Future<List<MakeupModel>> obtenerMakeUp(int pagina) async {
+  Future<List<MakeupModel>> obtenerMakeup(int pagina) async {
     final response = await http.get(_url, queryParameters: {'offset': pagina});
     List<MakeupModel> makeup = [];
     List<dynamic> responseData = response.data;
-  }
 
-  for (int i = 0; i < responseData.length; i++) {
+    for (int i = 0; i < responseData.length; i++) {
       final responseMakeup = await http.get(responseData[i]['url']);
       makeup.add(MakeupModel.fromJson(responseMakeup.data));
     }
     return makeup;
-    
   }
 }

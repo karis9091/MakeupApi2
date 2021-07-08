@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
+  HomePageState createState() => HomePageState();
+}
+
+class HomePageState extends State {
+  final _controller = ScrollController();
+  bool _cargando = false;
 }
